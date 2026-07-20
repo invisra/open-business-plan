@@ -1,0 +1,29 @@
+{
+  "name": "open-business-plan",
+  "version": "1.0.0",
+  "description": "An open source JSON Schema for defining a business plan, with a TypeScript validator.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "validate-business-plan": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "business_plan.schema.json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "validate": "npm run build && node dist/cli.js",
+    "test": "npm run build && node dist/cli.js examples/example-business-plan.json"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^20.14.0"
+  }
+}

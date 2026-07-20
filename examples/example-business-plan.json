@@ -1,0 +1,132 @@
+{
+  "id": 1,
+  "name": "Cedar & Stone Coffee",
+  "filed_name": "Cedar and Stone Coffee LLC",
+  "tagline": "Small-batch coffee, roasted with intent.",
+  "logo_link": "https://cedarandstonecoffee.com/logo.png",
+  "domain": "cedarandstonecoffee.com",
+  "organization": [
+    {
+      "first_name": "Ana",
+      "last_name": "Ramirez",
+      "role": "Founder & CEO",
+      "email": "ana@cedarandstonecoffee.com"
+    },
+    {
+      "first_name": "Owen",
+      "last_name": "Park",
+      "role": "Head Roaster",
+      "email": "owen@cedarandstonecoffee.com"
+    }
+  ],
+  "date_started": {
+    "year": 2024,
+    "month": 3,
+    "day": 15
+  },
+  "plan": {
+    "mission_statement": "To roast and serve exceptional coffee while building a fair, transparent supply chain with our growers.",
+    "vision_statement": "To be the most trusted specialty coffee roaster in the Pacific Northwest by 2030.",
+    "executive_summary": {
+      "overview": "Cedar & Stone Coffee is a specialty coffee roaster and cafe focused on direct-trade sourcing and small-batch roasting for wholesale and retail customers.",
+      "objectives": [
+        {
+          "name": "Open flagship cafe",
+          "description": "Open our first retail location in Portland, OR within the first year of operation."
+        },
+        {
+          "name": "Wholesale expansion",
+          "description": "Sign 25 wholesale accounts with local restaurants and grocers by end of year two."
+        }
+      ]
+    },
+    "market_analysis": {
+      "target_market": "Urban professionals aged 25-45 who value ethically sourced, high-quality coffee.",
+      "industry_trends": [
+        "Growing consumer demand for direct-trade and traceable sourcing",
+        "Increased interest in low-waste and reusable packaging"
+      ],
+      "competitors": [
+        {
+          "name": "Riverbend Roasters",
+          "strengths": ["Established brand", "Multiple retail locations"],
+          "weaknesses": ["Higher price point", "Limited wholesale flexibility"]
+        }
+      ],
+      "customer_demographics": [
+        "Ages 25-45",
+        "Household income $60k+",
+        "Urban and suburban Portland metro area"
+      ],
+      "swot_analysis": {
+        "strengths": ["Direct grower relationships", "Experienced roasting team"],
+        "weaknesses": ["Limited brand recognition", "Single roasting facility"],
+        "opportunities": ["Growing wholesale demand", "Subscription coffee market"],
+        "threats": ["Green coffee price volatility", "Established local competitors"]
+      }
+    },
+    "marketing_plan": {
+      "unique_value_proposition": "Direct-trade, small-batch coffee roasted within 48 hours of order.",
+      "pricing_strategy": "Premium pricing justified by direct-trade sourcing and freshness guarantee.",
+      "promotion_channels": ["Instagram", "Local farmers markets", "Email newsletter"],
+      "sales_strategy": "Combination of direct retail sales, e-commerce subscriptions, and wholesale accounts.",
+      "branding_strategy": "Warm, craftsmanship-focused branding emphasizing origin stories and grower partnerships."
+    },
+    "financial_plan": {
+      "startup_costs": [
+        { "name": "Roasting equipment", "amount": 45000 },
+        { "name": "Cafe buildout", "amount": 60000, "description": "Leasehold improvements for flagship location" }
+      ],
+      "funding_sources": [
+        { "name": "Founder investment", "amount": 40000 },
+        { "name": "Small business loan", "amount": 65000 }
+      ],
+      "revenue_streams": ["Retail cafe sales", "Wholesale accounts", "Online subscriptions"],
+      "revenue_projections": [
+        { "year": 2025, "amount": 350000 },
+        { "year": 2026, "amount": 620000 }
+      ],
+      "expense_projections": [
+        { "year": 2025, "amount": 300000 },
+        { "year": 2026, "amount": 480000 }
+      ],
+      "break_even_point": "Expected to break even in month 14 based on projected wholesale growth."
+    },
+    "operations_plan": {
+      "location": "Portland, OR",
+      "facilities": "3,500 sq ft roasting facility with attached retail cafe",
+      "equipment": ["15kg drum roaster", "Espresso machine", "Packaging line"],
+      "suppliers": [
+        {
+          "name": "Finca Los Robles",
+          "description": "Direct-trade green coffee supplier in Huila, Colombia"
+        }
+      ],
+      "staffing_plan": [
+        { "role": "Barista", "count": 4, "description": "Part-time cafe staff" },
+        { "role": "Roaster", "count": 1 }
+      ],
+      "workflow": "Green coffee is received weekly, roasted to order within 48 hours, and shipped or served fresh."
+    },
+    "core_values": [
+      {
+        "name": "Transparency",
+        "description": "We disclose what we pay growers and how we price our coffee."
+      },
+      {
+        "name": "Craftsmanship",
+        "description": "We treat every batch as an opportunity to improve our roast profiles."
+      }
+    ],
+    "naics_categories": [
+      {
+        "code": "311920",
+        "description": "Coffee and Tea Manufacturing"
+      },
+      {
+        "code": "722515",
+        "description": "Snack and Nonalcoholic Beverage Bars"
+      }
+    ]
+  }
+}
