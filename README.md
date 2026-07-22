@@ -30,7 +30,7 @@ The root of the repo is a private npm workspace that ties the TypeScript package
 ```jsonc
 // in your business-plan.json
 {
-  "$schema": "https://github.com/invisra/open-business-plan/blob/main/business_plan.schema.json",
+  "$schema": "https://schemas.invisra.ai/business-plan/1.0.0/business_plan.schema.json",
   "name": "...",
   ...
 }
