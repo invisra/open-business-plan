@@ -2,7 +2,11 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 import path from "node:path";
-import type { Ajv2020 as Ajv2020Type, Options as Ajv2020Options, ErrorObject } from "ajv/dist/2020.js";
+import type {
+  Ajv2020 as Ajv2020Type,
+  Options as Ajv2020Options,
+  ErrorObject,
+} from "ajv/dist/2020.js";
 import type { FormatsPlugin } from "ajv-formats";
 import type { BusinessPlan } from "./models.js";
 
@@ -66,7 +70,8 @@ export function validateBusinessPlanFile(filePath: string): ValidationResult {
 /** Formats Ajv errors into human-readable strings, e.g. "plan.mission_statement: is required". */
 export function formatErrors(errors: ErrorObject[]): string[] {
   return errors.map((err) => {
-    const location = err.instancePath.replace(/^\//, "").replace(/\//g, ".") || "(root)";
+    const location =
+      err.instancePath.replace(/^\//, "").replace(/\//g, ".") || "(root)";
     return `${location}: ${err.message}`;
   });
 }

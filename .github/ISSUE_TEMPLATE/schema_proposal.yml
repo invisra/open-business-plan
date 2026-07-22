@@ -1,0 +1,12 @@
+name: schema proposal
+description: Propose a change or addition to the business plan schema
+title: "[schema]: "
+labels: [schema, proposal]
+body:
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Describe the proposed field(s) or change, the use case, and how it maps across the schema and both packages.
+    validations:
+      required: true

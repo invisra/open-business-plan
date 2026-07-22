@@ -12,6 +12,18 @@
     "sync:schema": "node scripts/sync-schema.mjs",
     "build": "npm run sync:schema && npm --workspace @invisra/open-business-plan run build",
     "test": "npm --workspace @invisra/open-business-plan test",
-    "test:python": "python -m pytest packages/python/tests"
+    "test:python": "cd packages/python && python -m pytest",
+    "lint": "npm run lint:ts && npm run lint:python",
+    "lint:ts": "eslint . && prettier --check \"**/*.{ts,js,mjs}\"",
+    "lint:python": "cd packages/python && ruff check . && ruff format --check . && mypy",
+    "format": "prettier --write \"**/*.{ts,js,mjs}\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^9.1.2",
+    "globals": "^15.15.0",
+    "prettier": "^3.9.5",
+    "typescript-eslint": "^8.63.0"
   }
 }

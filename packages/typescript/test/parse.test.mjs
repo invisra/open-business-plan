@@ -10,7 +10,14 @@ import {
 } from "../dist/index.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const EXAMPLE = path.join(__dirname, "..", "..", "..", "examples", "example-business-plan.json");
+const EXAMPLE = path.join(
+  __dirname,
+  "..",
+  "..",
+  "..",
+  "examples",
+  "example-business-plan.json",
+);
 
 test("parseBusinessPlanFile returns a typed object for the example", () => {
   const plan = parseBusinessPlanFile(EXAMPLE);

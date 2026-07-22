@@ -1,0 +1,6 @@
+# Build and dependency output.
+**/dist/
+**/node_modules/
+
+# Synced schema copy (generated; the root business_plan.schema.json is canonical).
+packages/typescript/business_plan.schema.json

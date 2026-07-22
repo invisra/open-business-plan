@@ -1,0 +1,12 @@
+name: bug report
+description: Report a bug in the schema or a package
+title: "[bug]: "
+labels: [bug]
+body:
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Describe the bug, the affected area (schema / typescript / python), steps to reproduce, and the expected behaviour.
+    validations:
+      required: true

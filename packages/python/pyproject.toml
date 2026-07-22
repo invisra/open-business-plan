@@ -8,7 +8,7 @@ version = "1.0.0"
 description = "Pydantic models that parse and validate the open-business-plan JSON Schema."
 readme = "README.md"
 requires-python = ">=3.9"
-license = "Apache-2.0"
+license = { text = "Apache-2.0" }
 authors = [{ name = "Invisra" }]
 keywords = ["business-plan", "json-schema", "pydantic"]
 classifiers = [
@@ -30,3 +30,19 @@ parse-business-plan = "open_business_plan.__main__:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["open_business_plan"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+packages = ["open_business_plan"]
+mypy_path = "."
+ignore_missing_imports = true
