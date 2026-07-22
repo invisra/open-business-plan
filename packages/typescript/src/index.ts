@@ -2,8 +2,13 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 import path from "node:path";
-import type { Ajv2020 as Ajv2020Type, Options as Ajv2020Options, ErrorObject } from "ajv/dist/2020.js";
+import type {
+  Ajv2020 as Ajv2020Type,
+  Options as Ajv2020Options,
+  ErrorObject,
+} from "ajv/dist/2020.js";
 import type { FormatsPlugin } from "ajv-formats";
+import type { BusinessPlan } from "./models.js";
 
 // ajv and ajv-formats ship CJS builds whose *default* export type doesn't
 // line up with real Node ESM/CJS interop under NodeNext (their declaration
@@ -15,6 +20,8 @@ import type { FormatsPlugin } from "ajv-formats";
 const require = createRequire(import.meta.url);
 const Ajv2020: typeof Ajv2020Type = require("ajv/dist/2020.js").Ajv2020;
 const addFormats: FormatsPlugin = require("ajv-formats");
+
+export * from "./models.js";
 
 export interface ValidationResult {
   valid: boolean;
@@ -63,7 +70,42 @@ export function validateBusinessPlanFile(filePath: string): ValidationResult {
 /** Formats Ajv errors into human-readable strings, e.g. "plan.mission_statement: is required". */
 export function formatErrors(errors: ErrorObject[]): string[] {
   return errors.map((err) => {
-    const location = err.instancePath.replace(/^\//, "").replace(/\//g, ".") || "(root)";
+    const location =
+      err.instancePath.replace(/^\//, "").replace(/\//g, ".") || "(root)";
     return `${location}: ${err.message}`;
   });
+}
+
+/** Thrown by `parseBusinessPlan`/`parseBusinessPlanFile` when validation fails. */
+export class BusinessPlanValidationError extends Error {
+  /** The raw Ajv validation errors. */
+  readonly errors: ErrorObject[];
+
+  constructor(errors: ErrorObject[]) {
+    super(`Invalid business plan:\n  - ${formatErrors(errors).join("\n  - ")}`);
+    this.name = "BusinessPlanValidationError";
+    this.errors = errors;
+  }
+}
+
+/**
+ * Validates `data` against the schema and returns it as a typed `BusinessPlan`
+ * object. Throws `BusinessPlanValidationError` if the document is invalid.
+ *
+ * This is the "turn JSON into an object" entry point: because the interfaces
+ * mirror the schema key-for-key, no field remapping is needed — validation is
+ * what makes the `as BusinessPlan` assertion sound.
+ */
+export function parseBusinessPlan(data: unknown): BusinessPlan {
+  const result = validateBusinessPlan(data);
+  if (!result.valid) {
+    throw new BusinessPlanValidationError(result.errors);
+  }
+  return data as BusinessPlan;
+}
+
+/** Reads and parses a JSON file into a typed `BusinessPlan` object. */
+export function parseBusinessPlanFile(filePath: string): BusinessPlan {
+  const raw = readFileSync(filePath, "utf-8");
+  return parseBusinessPlan(JSON.parse(raw));
 }

@@ -1,0 +1,39 @@
+{
+  "name": "@invisra/open-business-plan",
+  "version": "1.0.0",
+  "description": "TypeScript types, object parser, and JSON Schema validator for open-business-plan.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "validate-business-plan": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "business_plan.schema.json",
+    "README.md"
+  ],
+  "scripts": {
+    "sync:schema": "node ../../scripts/sync-schema.mjs",
+    "prebuild": "npm run sync:schema",
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build",
+    "pretest": "npm run build",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^20.14.0"
+  }
+}

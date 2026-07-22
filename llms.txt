@@ -1,0 +1,26 @@
+# open-business-plan
+
+> An open-source JSON Schema (2020-12, from Invisra) that defines a business plan, plus TypeScript and Python packages that parse a business-plan JSON document into typed, validated objects.
+
+An `open-business-plan` document describes a business's identity and its plan: `{id?, name, filed_name, tagline, logo_link?, domain, organization[], date_started, plan}`. `organization` is a non-empty list of `member` objects; `date_started` is a partial `{year, month?, day?}` date. `plan` is `{mission_statement, vision_statement, executive_summary, market_analysis?, marketing_plan?, financial_plan?, operations_plan?, core_values[], naics_categories[]}` — everything required except the four optional sub-plans.
+
+`business_plan.schema.json` at the repo root is the single source of truth. The TypeScript interfaces (`packages/typescript/src/models.ts`) and pydantic models (`packages/python/open_business_plan/models.py`) mirror it key-for-key (snake_case, no aliasing) and must be kept in sync with it.
+
+## Parsing into objects
+
+- TypeScript (`@invisra/open-business-plan`): `parseBusinessPlan(data)` / `parseBusinessPlanFile(path)` validate with Ajv then return a typed `BusinessPlan`, throwing `BusinessPlanValidationError` on invalid input. `validateBusinessPlan` / `validateBusinessPlanFile` validate without throwing and return the raw Ajv errors. ESM-only.
+- Python (`open-business-plan`, pydantic v2): `parse_business_plan(dict | str | bytes)` / `load_business_plan_file(path)` return a typed `BusinessPlan`; invalid input raises `pydantic.ValidationError`.
+
+## Schema shape
+
+- Reusable `$defs`: `member`, `date`, `namedDescription` (name + description), `competitor`, `swotAnalysis`, `lineItem` (name + amount ≥ 0), `yearlyProjection` (year + amount ≥ 0), `staffingRole` (role + count ≥ 0), `naicsCategory` (`code` matching `^[0-9]{2,6}$` + description).
+- Every object except the root sets `additionalProperties: false`, so unknown keys fail validation (the pydantic models use `extra="forbid"` to match; the root object stays open, as in the schema).
+- String formats (`email`, `uri`, `hostname`) are enforced by the JSON Schema and the TypeScript/Ajv validator, but are not re-checked by the pydantic models.
+
+## Start here
+
+- [README.md](README.md): overview, install, and usage for both packages.
+- [docs/schema-reference.md](docs/schema-reference.md): field-by-field reference.
+- [examples/example-business-plan.json](examples/example-business-plan.json): a complete example document.
+- [packages/typescript/README.md](packages/typescript/README.md) and [packages/python/README.md](packages/python/README.md): per-package docs.
+- [CONTRIBUTING.md](CONTRIBUTING.md): keep the schema and both models in sync; run lint + tests before a PR.
