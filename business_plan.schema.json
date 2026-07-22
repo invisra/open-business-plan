@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://github.com/invisra/open-business-plan/blob/main/business_plan.schema.json",
+    "$id": "https://schemas.invisra.ai/business-plan/1.0.0/business_plan.schema.json",
     "title": "BusinessPlan",
     "description": "An Open Source JSON Schema that defines a Business Plan.",
     "type": "object",
